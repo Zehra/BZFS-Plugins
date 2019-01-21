@@ -38,7 +38,7 @@ void NoLossOnSW::Cleanup(void) {
 
 void NoLossOnSW::Event(bz_EventData *eventData) {
   if (eventData->eventType == bz_ePlayerDieEvent) {
-    bz_PlayerDieEventData_V2 *deathData = (bz_PlayerDieEventData_V2*)eventData;
+    bz_PlayerDieEventData_V1 *deathData = (bz_PlayerDieEventData_V1*)eventData;
     if (deathData->flagKilledWith == "SW") {
       bz_incrementPlayerLosses(deathData->playerID, -1);
     }
