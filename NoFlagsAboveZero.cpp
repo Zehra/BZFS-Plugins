@@ -42,13 +42,12 @@ void NoFlagsAboveZero::Cleanup(void)
 
 void NoFlagsAboveZero::Event(bz_EventData *eventData)
 {
-  switch (eventData->eventType)
-  {
-  case bz_eAllowFlagGrab:
+  if (eventData->eventType == bz_eAllowFlagGrab)
   {
     bz_AllowFlagGrabData_V1* flagData = (bz_AllowFlagGrabData_V1*)eventData;
-    if (bz_getPlayerWins(flagData->playerID) > bz_getPlayerLosses(flagData->playerID)) { flagData->allow = false; }
-  }
-  break;
+    if (bz_getPlayerWins(flagData->playerID) > bz_getPlayerLosses(flagData->playerID))
+      {
+        flagData->allow = false; 
+      }
   }
 }
